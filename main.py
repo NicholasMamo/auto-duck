@@ -10,39 +10,16 @@ The configuration variables are defined globally, and then set in the :func:`con
 This is only done to place the configuration at the top of the file.
 """
 
-DURATION = None
-DUCK = None
-STEPS = None
-FADE = None
-
-def config():
-    """
-    Configure the auto-ducker.
-    The function is defined here so that by the time it is called, the functions have all been defined.
-    """
-
-    # the number of milliseconds to spend fading
-    global DURATION
-    DURATION = 2000
-
-    # the minimum volume to which to duck music applications
-    global DUCK
-    DUCK = 0.4
-
-    # how detailed the auto-ducking; the higher the steps, the lower the performance but the more seamless the ducking
-    global STEPS
-    STEPS = 30
-
-    # the fade function
-    global FADE
-    FADE = bezier
+DURATION = 2000 # the number of milliseconds to spend fading
+DUCK = 0.4 # the minimum volume to which to duck music applications
+STEPS = 30 # how smooth the auto-ducking
+FADE = lambda x: bezier(x) # the fade function
 
 """
 MAIN LOOP
 """
 
 async def main():
-    config() # configure the auto-ducker
     ducking = [ ] # the apps that have been or are being ducked
 
     # connect to the PulseAudio sound server
