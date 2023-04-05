@@ -34,7 +34,6 @@ async def main():
                 media_role = app.proplist.get('media.role', '').lower()
                 if (media_name and media_name == 'playback') or (media_role and media_role != 'music'):
                     playback = True
-                    break
 
                 if playback:
                     break
