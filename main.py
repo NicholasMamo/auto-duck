@@ -33,6 +33,46 @@ def config():
     global FADE
     FADE = bezier
 
+
+async def duck(pulse, app):
+    """
+    Duck the given application.
+
+    :param pulse: The asynchronous connection with the PulseAudio sound server.
+    :type pulse: :class:`pulsectl_asyncio.pulsectl_async.PulseAsync`
+    :param app: The sink input information for the app that will be duck.
+    :type app: :class:`pulsectl.pulsectl.PulseSinkInputInfo`
+    """
+
+    volume = app.volume
+    for i in range(STEPS):
+        volume.value_flat = DUCK + (1 - DUCK) * (1 - FADE(i))
+        await pulse.volume_set(app, volume)
+        await asyncio.sleep(DURATION/1000/STEPS)
+
+    volume.volume_flat = DUCK
+    await pulse.volume_set(app, volume)
+
+async def unduck(pulse, app):
+    """
+    Unduck the given application.
+
+    :param pulse: The asynchronous connection with the PulseAudio sound server.
+    :type pulse: :class:`pulsectl_asyncio.pulsectl_async.PulseAsync`
+    :param app: The sink input information for the app that will be unduck.
+    :type app: :class:`pulsectl.pulsectl.PulseSinkInputInfo`
+    """
+
+    volume = app.volume
+    for i in range(STEPS):
+        volume.value_flat = DUCK + (1 - DUCK) * (FADE(i))
+        await pulse.volume_set(app, volume)
+        await asyncio.sleep(DURATION/1000/STEPS)
+
+    volume.volume_flat = 1
+    await pulse.volume_set(app, volume)
+
+"""
 FADE FUNCTIONS
 """
 
