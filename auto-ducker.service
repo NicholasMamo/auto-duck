@@ -1,0 +1,15 @@
+[Unit]
+Description=A music auto-ducker for Linux built with Python
+After=multi-user.target
+
+[Service]
+Environment=XDG_RUNTIME_DIR=/run/user/USERID
+Type=simple
+Restart=always
+RestartSec=30
+User=USER
+Group=GROUP
+ExecStart=/PATH/TO/auto-ducker/venv/bin/python /PATH/TO/auto-ducker/main.py
+
+[Install]
+WantedBy=multi-user.target
