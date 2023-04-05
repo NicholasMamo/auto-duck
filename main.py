@@ -10,10 +10,10 @@ The configuration variables are defined globally, and then set in the :func:`con
 This is only done to place the configuration at the top of the file.
 """
 
-DURATION = 2000 # the number of milliseconds to spend fading
-DUCK = 0.4 # the minimum volume to which to duck music applications
-STEPS = 30 # how smooth the auto-ducking
-FADE = lambda x: bezier(x) # the fade function
+DURATION = 2000 # how long to spend ducking (in milliseconds; minimum: 0)
+DUCK = 0.4 # the minimum volume to which to duck music applications (minimum: 0; maximum: 1)
+STEPS = 30 # how smooth the auto-ducking (minimum: 1)
+FADE = lambda x: bezier(x) # the fade function used to duck and unduck music applications
 
 """
 MAIN LOOP
