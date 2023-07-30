@@ -8,7 +8,7 @@ The auto-ducker is a simple script to duck the volume of music applications duri
 To detect music applications, the script looks for applications running on the PulseAudio sound server with the media role set to _music_.
 The script considers any other application running on the PulseAudio sound server as playback and ducks the volume of music applications.
 
-The auto-ducker has been tested and works with Spotify and [Amberol](https://gitlab.gnome.org/World/amberol).
+The auto-ducker has been tested and works with Google Chrome, Firefox, Spotify and [Amberol](https://gitlab.gnome.org/World/amberol).
 The script runs asynchronously every second to minimize resource use.
 
 ## Getting Started

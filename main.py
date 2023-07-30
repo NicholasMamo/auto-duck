@@ -32,7 +32,10 @@ async def main():
             for app in apps:
                 media_name = app.proplist.get('media.name', '').lower()
                 media_role = app.proplist.get('media.role', '').lower()
-                if (media_name and media_name == 'playback') or (media_role and media_role != 'music'):
+                application_name = app.proplist.get('application.name', '').lower()
+                if ((media_name and media_name == 'playback') or 
+                    (media_role and media_role != 'music') or
+                    (application_name and application_name == 'firefox')):
                     playback = True
 
                 if playback:
