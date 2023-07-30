@@ -8,7 +8,8 @@ The auto-ducker is a simple script to duck the volume of music applications duri
 To detect music applications, the script looks for applications running on the PulseAudio sound server with the media role set to _music_.
 The script considers any other application running on the PulseAudio sound server as playback and ducks the volume of music applications.
 
-The auto-ducker has been tested and works with Google Chrome, Firefox, Spotify and [Amberol](https://gitlab.gnome.org/World/amberol).
+The auto-ducker has been tested and works with Spotify, [Rhythmbox](https://wiki.gnome.org/Apps/Rhythmbox) and [Amberol](https://gitlab.gnome.org/World/amberol).
+It has also been tested with Google Chrome and Firefox.
 The script runs asynchronously every second to minimize resource use.
 
 ## Getting Started
@@ -70,12 +71,12 @@ Remember that whenever you edit the service configuration, you need to reload th
 
 - Why doesn't YouTube duck or unduck?
   The auto-ducker only ducks the volume of music applications, not browser tabs.
-If you are listening to YouTube on Google Chrome or Firefox, the auto-ducker will see a browser with audio playback, not a music player.
-The auto-ducker has been tested and works with Spotify and [Amberol](https://gitlab.gnome.org/World/amberol).
+  If you are listening to YouTube on Google Chrome or Firefox, the auto-ducker will see a browser with audio playback, not a music player.
+  The auto-ducker has been tested and works with Spotify, [Rhythmbox](https://wiki.gnome.org/Apps/Rhythmbox) and [Amberol](https://gitlab.gnome.org/World/amberol).
 
 - Why is there a delay until music applications are unducked?
   The auto-ducker only detects that playback has stopped when the application releases the PulseAudio sound server.
-Google Chrome, for example, signals that playback has stopped when no tab has played audio for 15 seconds.
+  Google Chrome, for example, signals that playback has stopped when no tab has played audio for 15 seconds.
 
 ## Authors
 
