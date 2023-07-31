@@ -33,7 +33,11 @@ async def main():
                 media_name = app.proplist.get('media.name', '').lower()
                 media_role = app.proplist.get('media.role', '').lower()
                 application_name = app.proplist.get('application.name', '').lower()
-                if ((media_name and media_name == 'playback' and (not media_role or media_role == 'speech-dispatcher-espeak-ng')) or 
+
+                if application_name.startswith('speech-dispatcher'):
+                    continue
+
+                if ((media_name and media_name == 'playback') or 
                     (media_role and media_role != 'music') or
                     (application_name and application_name == 'firefox')):
                     playback = True
