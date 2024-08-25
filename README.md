@@ -57,6 +57,9 @@ You can configure the following variables:
 - `DUCK`: the minimum volume to which to duck the volume ofmusic applications (default: 0.4; minimum: 0; maximum: 1)
 - `STEPS`: how smooth the auto-ducking (default: 30); larger values lower performance but make ducking and unducking smoother (minimum: 1)
 - `FADE`: the fade function used to duck and unduck the volume of music applications (default: `bezier`); see the end of the script for fade functions
+- `MEDIA_NAME_EXCEPTIONS`: media names that should not cause audio to duck
+  > _Home / X_ (Twitter) acts as if it's playing audio even when it's not.
+  > When playback starts, even on the homepage, the media name changes, so audio still ducks corectly.
 
 ### Debug
 

@@ -14,6 +14,7 @@ DURATION = 2000 # how long to spend ducking (in milliseconds; minimum: 0)
 DUCK = 0.4 # the minimum volume to which to duck music applications (minimum: 0; maximum: 1)
 STEPS = 30 # how smooth the auto-ducking (minimum: 1)
 FADE = lambda x: bezier(x) # the fade function used to duck and unduck music applications
+MEDIA_NAME_EXCEPTIONS = [ 'home / x' ]
 
 """
 MAIN LOOP
@@ -39,7 +40,7 @@ async def main():
 
                 if ((media_name and media_name == 'playback') or 
                     (media_role and media_role != 'music') or
-                    (application_name and application_name == 'firefox')):
+                    (application_name and application_name == 'firefox' and media_name not in MEDIA_NAME_EXCEPTIONS)):
                     playback = True
 
                 if playback:
